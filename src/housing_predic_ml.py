@@ -1,11 +1,13 @@
 # Import necessary libraries
+import os
+import pickle
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
 
 # Path of the file to read
-file_path = '/Users/tenzinlodoe19/Desktop/jbooks/housing-ml-project/Data/train.csv'
+file_path = 'Data/train.csv'
 home_data = pd.read_csv(file_path)
 
 #prediction target
@@ -31,3 +33,9 @@ sale_predictions = home_model.predict(val_X)
 
 # Print mean absolutre error
 print(mean_absolute_error(val_y, sale_predictions))
+
+# saving model
+os.makedirs('model', exist_ok=True)
+with open('model/model.pkl', 'wb') as f:
+    pickle.dump(home_model, f)
+print("Model saved to model/model.pkl")
