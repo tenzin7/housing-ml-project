@@ -33,10 +33,3 @@ sale_predictions = home_model.predict(val_X)
 
 # Print mean absolutre error
 print(mean_absolute_error(val_y, sale_predictions))
-
-# After training
-#os.makedirs('model', exist_ok=True)
-#with open('model/model.pkl', 'wb') as f:
-#    pickle.dump(home_model, f)
-#print("Model saved to model/model.pkl")
-
